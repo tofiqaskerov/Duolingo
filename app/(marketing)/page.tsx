@@ -21,7 +21,7 @@ export default function Home() {
         <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
           Learn, practice, and master new languages with Lingo.
         </h1>
-        <div>
+        <div className="max-w-[330px] w-full flex flex-col items-center gap-y-3">
           <ClerkLoading>
             <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
           </ClerkLoading>
@@ -29,17 +29,26 @@ export default function Home() {
             <SignedOut>
               <SignUpButton
                 mode="modal"
-                forceRedirectUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL}
-                signInForceRedirectUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL}
+                forceRedirectUrl={
+                  process.env.NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL
+                }
+                signInForceRedirectUrl={
+                  process.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL
+                }
+             
               >
-                <Button size="lg" variant="secondary" className="w-full">
-                  Get Started
+                <Button size="lg" variant="secondary" className="w-full ">
+                  Get Started 
                 </Button>
               </SignUpButton>
               <SignInButton
                 mode="modal"
-                forceRedirectUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL}
-                signUpForceRedirectUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL}
+                forceRedirectUrl={
+                  process.env.NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL
+                }
+                signUpForceRedirectUrl={
+                  process.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL
+                }
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I already have an account
@@ -47,7 +56,7 @@ export default function Home() {
               </SignInButton>
             </SignedOut>
             <SignedIn>
-              <Button size="lg" variant="secondary" className="w-full" asChild>
+              <Button size="lg" variant="secondary" className="w-full"  asChild >
                 <Link href="/learn">Continue Learning</Link>
               </Button>
             </SignedIn>
