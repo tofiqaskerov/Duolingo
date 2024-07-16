@@ -16,6 +16,7 @@ const LearnPage = () => {
        </StickyWrapper>
        <FeedWrapper>
             <Header title="Spanish"/>
+           
        </FeedWrapper>
     </div>
   )
