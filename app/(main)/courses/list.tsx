@@ -4,6 +4,9 @@ import { courses, userProgress } from "@/db/schema";
 import { Card } from "./card";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { upsetUserProgress } from "@/actions/user-progress";
+import { toast } from "react-toastify";
+import Image from "next/image";
 
 type Props = {
     courses: typeof courses.$inferSelect[];
@@ -13,17 +16,28 @@ type Props = {
 
 export const List = ({courses, activeCourseId}: Props) =>{
     const router = useRouter()
-
+ 
     const [pending, startTransition] = useTransition()
 
     const onClick = (id:number) =>{
-        if(pending) return
+   
+        
+        if(pending) return 
         if(id === activeCourseId){
             return router.push("/learn")
         }
 
         startTransition(() => {
-            
+            upsetUserProgress(id).catch(() => toast.error("Something went wrong", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            }))
         })
     }
     return (
@@ -34,8 +48,8 @@ export const List = ({courses, activeCourseId}: Props) =>{
                    id={course.id}
                    title={course.title}
                    imageSrc={course.imageSrc}
-                   onClick={() =>{}}
-                   disabled={false}
+                   onClick={onClick}
+                   disabled={pending}
                    active={course.id === activeCourseId}
                 />
             ))}

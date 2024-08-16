@@ -4,6 +4,8 @@ import db from "@/db/drizzle";
 import { getCourseById, getUserProgress } from "@/db/queries";
 import { userProgress } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const upsetUserProgress = async (courseId: number) => {
   const { userId } = await auth();
@@ -19,6 +21,7 @@ export const upsetUserProgress = async (courseId: number) => {
     throw new Error("Course not found");
   }
 
+
   // if(!course.units.length || !course.units[0].lessons.length){
   //     throw new Error("Course is empty")
   // }
@@ -31,6 +34,9 @@ export const upsetUserProgress = async (courseId: number) => {
       userName: user.firstName || "user",
       userImageSrc: user.imageUrl || "/mascot.svg",
     });
+    revalidatePath("/courses");
+    revalidatePath("/learn");
+    redirect("/learn");
   }
 
   await db.insert(userProgress).values({
@@ -39,4 +45,8 @@ export const upsetUserProgress = async (courseId: number) => {
     userName: user.firstName || "user",
     userImageSrc: user.imageUrl || "/mascot.svg",
   });
+
+  revalidatePath("/courses");
+  revalidatePath("/learn");
+  redirect("/learn");
 };
