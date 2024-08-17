@@ -60,12 +60,30 @@ const main = async () => {
         order: 1,
         title: "Nouns",
       },
-      // {
-      //   id: 2,
-      //   unitId: 1, // Learn the basics
-      //   order: 2,
-      //   title: "Verbs",
-      // },
+      {
+        id: 2,
+        unitId: 1, // Learn the basics
+        order: 2,
+        title: "Verbs",
+      },
+      {
+        id: 3,
+        unitId: 1, // Learn the basics
+        order: 3,
+        title: "Nouns",
+      },
+      {
+        id: 4,
+        unitId: 1, // Learn the basics
+        order: 4,
+        title: "Verbs",
+      },
+      {
+        id: 5,
+        unitId: 1, // Learn the basics
+        order: 5,
+        title: "Verbs",
+      },
     ]);
 
     await db.insert(schema.challenges).values([
@@ -73,7 +91,7 @@ const main = async () => {
         id: 1,
         lessonId: 1, // Nouns
         type: "SELECT",
-        questions: 'Which one of these is the "the man" ?',
+        question: 'Which one of these is the "the man" ?',
         order: 1,
       },
 
