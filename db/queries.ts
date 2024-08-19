@@ -52,7 +52,6 @@ export const getUnits = cache(async () => {
   });
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
-      console.log(lesson.challenges.length);
       
       if(lesson.challenges.length === 0){
        return {...lesson, completed:false} 
@@ -188,7 +187,9 @@ export const getLessonPercentage = cache(async () => {
     (challenge) => challenge.completed
   );
   const percentage =
-    Math.round(completedChallenges.length / lesson.challenges.length) * 100;
-
+    Math.round((completedChallenges.length / lesson.challenges.length)*100) ;
+  
+ 
+    
   return percentage;
 });
