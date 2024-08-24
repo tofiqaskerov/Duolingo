@@ -20,9 +20,9 @@ export const upsertChallengeProgress =  async(challengeId:number) =>{
     throw new Error("User progress not found")
    }
 
-   const challenge = await db.query.challenges.findFirst({
+   const challenge = await db.query.challenges.findFirst({ 
     where: eq(challenges.id, challengeId)
-   })
+   })  
 
    if(!challenge){
     throw new Error("Challenge not found")
@@ -38,7 +38,7 @@ export const upsertChallengeProgress =  async(challengeId:number) =>{
 
    const isPractice = !!existingChallengeProgress
 
-   if(currentUserProgress.hearts === 0 && !isPractice){
+   if(currentUserProgress.hearts === 0 && !isPractice){ 
     return {error: "hearts"}
    }
 

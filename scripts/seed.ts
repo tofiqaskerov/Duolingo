@@ -145,6 +145,27 @@ const main = async () => {
         question: 'Which one of these is the "the robot" ?',
         order: 3,
       },
+      {
+        id: 4,
+        lessonId: 2, // Verbs
+        type: "SELECT",
+        question: 'Which one of these is the "the man" ?',
+        order: 1,
+      },
+      {
+        id: 5,
+        lessonId: 2, // Verbs
+        type: "ASSIST",
+        question: '"the man"',
+        order: 2,
+      },
+      { 
+        id: 6,
+        lessonId: 2, // Verbs
+        type: "SELECT",
+        question: 'Which one of these is the "the robot" ?',
+        order: 3,
+      },
     ]);
 
     await db.insert(schema.challengeOptions).values([

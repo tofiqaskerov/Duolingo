@@ -121,7 +121,14 @@ export const Quiz = ({
             })
         }
     }
-
+    console.log(currentChallenge)
+    if(!currentChallenge){
+        return(
+            <div>
+                Finished the challenge!
+            </div>
+        )
+    }
 
     const title = currentChallenge.type === "ASSIST" ? "Select the correct meaning" : currentChallenge.question
 
