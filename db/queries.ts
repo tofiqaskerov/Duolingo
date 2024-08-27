@@ -193,3 +193,8 @@ export const getLessonPercentage = cache(async () => {
     
   return percentage;
 });
+
+
+export const getUserSubscription = cache(async () =>{
+  const {userId} = await auth()
+})
