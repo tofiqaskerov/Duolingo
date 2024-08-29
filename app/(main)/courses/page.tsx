@@ -11,7 +11,8 @@ const CoursesPage = async () => {
     userProgressData,
   ]); 
 
-
+  
+  
   
   return (
     <div className="h-full max-w-[912px] px-3 mx-auto">
