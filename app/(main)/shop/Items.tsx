@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "react-toastify";
 
+
 const POINTS_TO_REFILL = 10;
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
 
 export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
   const [pending, startTransition] = useTransition();
-
+  
   const onRefillHearts = () => {
     if (pending || hearts === 5 || points < POINTS_TO_REFILL) {
       return;
@@ -35,6 +36,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
           if(res.data){
             window.location.href = res.data
           }
+
         }).catch(() => toast.error("Something went wrong"))
       })
   }
@@ -72,8 +74,9 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
           <div className="flex-1">
             <p className="text-neutral-700 text-base lg:text-xl font-bold">Unlimited hearts</p>
           </div>
-          <Button disabled={pending || hasActiveSubscription} onClick={onUpgrade}>
-            {hasActiveSubscription ? "active" : "upgrade" }
+          <Button disabled={pending} onClick={onUpgrade}>
+               
+            {hasActiveSubscription ? "settings" : "upgrade" }
           </Button>
       </div>
     </ul>
