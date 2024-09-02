@@ -7,9 +7,13 @@ import { Loader } from "lucide-react";
 
 type Props = {
   className?: string;
+  setOpen?: (isOpen:boolean) => void
 };
 
-export const Sidebar = ({ className }: Props) => {
+export const Sidebar = ({ className, setOpen }: Props) => {
+
+
+  
   return (
     <div
       className={cn(
@@ -26,10 +30,10 @@ export const Sidebar = ({ className }: Props) => {
         </div>
       </Link>
       <div className="flex flex-col gap-y-2 flex-1">
-        <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg"/>
-        <SidebarItem label="Leaderboard" href="/leaderboard" iconSrc="/leaderboard.svg"/>
-        <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg"/>
-        <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg"/>
+        <SidebarItem setOpen={setOpen} label="Learn" href="/learn" iconSrc="/learn.svg"/>
+        <SidebarItem setOpen={setOpen} label="Leaderboard" href="/leaderboard" iconSrc="/leaderboard.svg"/>
+        <SidebarItem setOpen={setOpen} label="Quests" href="/quests" iconSrc="/quests.svg"/>
+        <SidebarItem setOpen={setOpen} label="Shop" href="/shop" iconSrc="/shop.svg"/>
       </div>
        <div className="p-4">
             <ClerkLoading>

@@ -1,6 +1,6 @@
 "use client"
 
-import { challengeOptions, challenges } from "@/db/schema";
+import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { useEffect, useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
@@ -25,8 +25,11 @@ type Props = {
         completed:boolean;
         challengeOptions: typeof challengeOptions.$inferSelect[]
     })[] 
-    userSubscription: any
+    userSubscription: typeof userSubscription.$inferSelect & {
+        isActive: boolean,
+    } | null
 }
+
 
 export const Quiz = ({
     initialLessonId,
@@ -50,7 +53,7 @@ export const Quiz = ({
     const [sizeScreen, setSizeScreen] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
-      });
+   });
     
       useEffect(() => {
         function handleResize() {
@@ -226,7 +229,7 @@ export const Quiz = ({
                 percentage={percentage}
                 hasActiveSubscription={!!userSubscription?.isActive}
             />
-
+                
             <div className="flex-1">
                 <div className="h-full flex items-center justify-center">
                     <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
